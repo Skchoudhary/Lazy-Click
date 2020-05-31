@@ -1,0 +1,16 @@
+{
+  "name": "Lazy Click",
+  "version": "1.0",
+  "description": "Let you Sync Audio and Video Button in Google Meet Up",
+  "permissions": ["activeTab", "declarativeContent"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "page_action": {
+    "default_popup": "popup.html",
+  },
+  "icons": {
+  },
+  "manifest_version": 2
+}
