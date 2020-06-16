@@ -28,19 +28,19 @@ function triggerClickEvent(videoButton, audioButton) {
 
 triggerClickEvent(
   document.evaluate(
-    '//*[@id="ow4"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[1]/div/div/div',
+    '//*[@id="ow3"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[3]/div/div',
     document,
     null,
     XPathResult.FIRST_ORDERED_NODE_TYPE,
     null
   ).singleNodeValue,
   document.evaluate(
-    '//*[@id="ow4"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[3]/div/div',
+    '//*[@id="ow3"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[1]/div/div/div',
     document,
     null,
     XPathResult.FIRST_ORDERED_NODE_TYPE,
     null
-  ).singleNodeValue,
+  ).singleNodeValue
 );
 
 //  "page_action": {

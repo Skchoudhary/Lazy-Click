@@ -5,7 +5,7 @@
   "permissions": ["activeTab", "declarativeContent"],
   "background": {
     "scripts": ["background.js"],
-    "persistent": true
+    "persistent": false
   },
   "page_action": {
     "default_popup": "popup.html"
