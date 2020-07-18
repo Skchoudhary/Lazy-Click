@@ -1,0 +1,73 @@
+"use strict";
+
+function triggerClickEvent(videoButton, audioButton) {
+  // "HNeRed"  class show button is active
+  // U26fgb JRY2Pb mUbCce kpROve uJNmj M9Bg4d HNeRed
+  // U26fgb JRY2Pb mUbCce kpROve uJNmj FTMc0c N2RpBe jY9Dbb M9Bg4d
+  const videoButtonStatus = videoButton.classList.contains("HNeRed");
+  const audioButtonStatus = audioButton.classList.contains("HNeRed");
+  if (videoButtonStatus === audioButtonStatus) {
+    videoButton.click();
+    audioButton.click();
+  }
+  else {
+    (!audioButtonStatus && videoButtonStatus) ? videoButton.click() : audioButton.click();
+  }
+}
+
+triggerClickEvent(
+  document.evaluate(
+    '//*[@id="ow3"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[3]/div/div',
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue,
+  document.evaluate(
+    '//*[@id="ow3"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[1]/div/div/div',
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue
+);
+function serveTheAction() {
+    let currentTabURL = '';
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+    currentTabURL = tabs[0].url;
+    // use `url` here inside the callback because it's asynchronous!
+    });
+    let videoNode = null;
+    let audioNode = null;
+    if(currentTabURL.startwith('meet.google.com')) {
+	videoNode = document.evaluate(
+    '//*[@id="ow3"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[3]/div/div',
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+	).singleNodeValue;
+	audioNode = document.evaluate(
+    '//*[@id="ow3"]/div[1]/div/div[4]/div[3]/div[9]/div[2]/div[1]/div/div/div',
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+	).singleNodeValue;
+	
+    }
+    else if(currentTabURL.startwith('https://meet.jit.si/')) {
+	videoNode = //*[@id="new-toolbox"]/div[2]/div[2]/div[3]/div/div[1]/div/div/div[1];
+	audioNode = document.evaluate(
+    '//*[@id="new-toolbox"]/div[2]/div[2]/div[1]/div/div[1]/div/div/div[1]',
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue;
+     }
+    else {
+	alert('Extension not functional in the current tab.')
+    }
+	
+}
